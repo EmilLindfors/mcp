@@ -74,12 +74,14 @@ mcp = "0.1.0"
 1. Create a basic MCP server:
 
 ```rust
-use mcp::{McpServer, ServerConfig};
+use mcp_rs::error::McpError;
+use mcp_rs::server::config::ServerConfig;
+use mcp_rs::server::McpServer;
 
 #[tokio::main]
-async fn main() -> Result<(), mcp::error::McpError> {
+async fn main() -> Result<(), McpError> {
     // Create server with default configuration
-    let server = McpServer::new(ServerConfig::default());
+    let mut server = McpServer::new(ServerConfig::default());
     
     // Run the server
     server.run().await
